@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,10 @@
             color: var(--ink);
             background: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body > *:not(script) {
+            filter: blur(12px);
         }
 
         a {
@@ -227,19 +231,19 @@
         .slide-light {
             background-image:
                 linear-gradient(90deg, rgba(8, 21, 38, 0.15), rgba(8, 21, 38, 0.05)),
-                url("./assets/byu/hero-unique-light.jpg");
+                url("../assets/byu/hero-unique-light.jpg");
         }
 
         .slide-serve {
             background-image:
                 linear-gradient(90deg, rgba(8, 21, 38, 0.18), rgba(8, 21, 38, 0.04)),
-                url("./assets/byu/hero-serve.jpg");
+                url("../assets/byu/hero-serve.jpg");
         }
 
         .slide-devotional {
             background-image:
                 linear-gradient(90deg, rgba(8, 21, 38, 0.3), rgba(8, 21, 38, 0.08)),
-                url("./assets/byu/hero-devotional.jpg");
+                url("../assets/byu/hero-devotional.jpg");
         }
 
         .hero-content {
@@ -430,7 +434,7 @@
             font-weight: 900;
         }
 
-        .event-card time {
+        .event-date {
             color: #777777;
             font-size: 1.15rem;
         }
@@ -548,31 +552,31 @@
     </style>
 </head>
 <body>
-    <header>
+    <div>
         <div class="top-bar">
             <div class="top-inner">
-                <a class="anniversary" href="https://www.byu.edu/" aria-label="BYU 150">
+                <a class="anniversary" href="https://www.byu.edu/">
                     <span class="byu-small">BYU</span>
                     <span class="one-fifty">150</span>
                 </a>
-                <div class="utility-links" aria-label="Utility navigation">
+                <div class="utility-links">
                     <a href="https://my.byu.edu/">MyBYU</a>
                     <span class="divider">|</span>
                     <a href="https://learningsuite.byu.edu/">Learning Suite</a>
-                    <button class="search-icon" type="button" aria-label="Search"></button>
+                    <button class="search-icon" type="button"></button>
                 </div>
             </div>
         </div>
 
-        <nav class="main-nav" aria-label="Primary navigation">
+        <div class="main-nav">
             <div class="nav-inner">
                 <div class="nav-group">
                     <a href="https://www.byu.edu/about">About</a>
                     <a href="https://www.byu.edu/admissions-aid">Admissions &amp; Aid</a>
                 </div>
-                <a class="logo-panel" href="https://www.byu.edu/" aria-label="Brigham Young University home">
+                <a class="logo-panel" href="https://www.byu.edu/">
                     <div>
-                        <img src="./assets/byu/byu-logo-white-small.svg" alt="">
+                        <img src="../assets/byu/byu-logo-white-small.svg">
                         <span>BRIGHAM YOUNG<br>UNIVERSITY</span>
                     </div>
                 </a>
@@ -581,101 +585,101 @@
                     <a href="https://www.byu.edu/this-is-y">This is Y</a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
-    <main>
-        <section class="hero" aria-label="Featured stories">
-            <article class="slide slide-light is-active" data-slide>
+    <div>
+        <div class="hero">
+            <div class="slide slide-light is-active" data-slide>
                 <div class="hero-content">
                     <h1>A Unique Light</h1>
                     <p>Provo to New York City on a single tank of gas? BYU engineering students won the Shell Eco Marathon for the third time in four years, building the most fuel-efficient supermileage vehicle in all the land.</p>
                     <a class="more-button" href="https://news.byu.edu/intellect/the-best">More</a>
                 </div>
-            </article>
+            </div>
 
-            <article class="slide slide-serve" data-slide>
+            <div class="slide slide-serve" data-slide>
                 <div class="hero-content centered">
                     <h1>Go Forth to Serve</h1>
                     <p>BYU students have earned some of the nation's highest honors, but for the first time ever, a BYU student has been named the top U.S. Marine Corps officer candidate in the country.</p>
                     <a class="more-button" href="https://news.byu.edu/byu-student-named-honor-graduate-as-top-u-s-marine-corps-officer-candidate-in-the-nation">More</a>
                 </div>
-            </article>
+            </div>
 
-            <article class="slide slide-devotional" data-slide>
+            <div class="slide slide-devotional" data-slide>
                 <div class="hero-content">
                     <h1>Full Divine Potential</h1>
                     <p>Every Tuesday at 11 a.m., the BYU community gathers together for an inspiring, faith-filled devotional. Click the button below to see the schedule of speakers for spring and summer terms.</p>
                     <a class="more-button" href="https://news.byu.edu/events/spring-summer-2026-devotional-and-forum-schedule">More</a>
                 </div>
-            </article>
+            </div>
 
-            <button class="hero-control prev" type="button" aria-label="Previous story" data-prev></button>
-            <button class="hero-control next" type="button" aria-label="Next story" data-next></button>
-        </section>
+            <button class="hero-control prev" type="button" data-prev></button>
+            <button class="hero-control next" type="button" data-next></button>
+        </div>
 
-        <section class="quick-links" aria-label="Popular links">
+        <div class="quick-links">
             <a class="quick-link" href="https://www.byu.edu/admissions-aid">
-                <img src="./assets/byu/byumonogram.svg" alt="">
+                <img src="../assets/byu/byumonogram.svg">
                 <span>Apply</span>
             </a>
             <a class="quick-link" href="https://www.byu.edu/this-is-y">
-                <img src="./assets/byu/templeslc-icon.svg" alt="">
+                <img src="../assets/byu/templeslc-icon.svg">
                 <span>Disciples of Christ</span>
             </a>
             <a class="quick-link" href="https://academiccalendar.byu.edu/">
-                <img src="./assets/byu/calendar-icon.svg" alt="">
+                <img src="../assets/byu/calendar-icon.svg">
                 <span>Academic Calendar</span>
             </a>
             <a class="quick-link" href="https://aims.byu.edu/">
-                <img src="./assets/byu/buildingmaeser-icon.svg" alt="">
+                <img src="../assets/byu/buildingmaeser-icon.svg">
                 <span>Becoming BYU</span>
             </a>
             <a class="quick-link" href="https://byucougars.com/">
-                <img src="./assets/byu/stretchy-athletics.svg" alt="">
+                <img src="../assets/byu/stretchy-athletics.svg">
                 <span>Athletics</span>
             </a>
-        </section>
+        </div>
 
-        <section class="events" aria-labelledby="events-heading">
+        <div class="events">
             <h2 class="section-title" id="events-heading">Highlighted Events</h2>
             <div class="event-grid">
-                <article class="event-card">
-                    <div class="event-media" aria-hidden="true">
-                        <img src="./assets/byu/event-jazz.jpg" alt="">
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="../assets/byu/event-jazz.jpg">
                     </div>
                     <div class="event-body">
                         <h3>Free Concert: Jazz Combo</h3>
-                        <time datetime="2026-06-10">W, June 10</time>
+                        <span class="event-date">W, June 10</span>
                     </div>
-                </article>
+                </div>
 
-                <article class="event-card">
-                    <div class="event-media" aria-hidden="true">
-                        <img src="./assets/byu/event-film.jpg" alt="">
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="../assets/byu/event-film.jpg">
                     </div>
                     <div class="event-body">
                         <h3>Free Film: Jason and The Argonauts</h3>
-                        <time datetime="2026-06-12">F, June 12</time>
+                        <span class="event-date">F, June 12</span>
                     </div>
-                </article>
+                </div>
 
-                <article class="event-card">
-                    <div class="event-media" aria-hidden="true">
-                        <img src="./assets/byu/event-devotional.jpg" alt="">
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="../assets/byu/event-devotional.jpg">
                     </div>
                     <div class="event-body">
                         <h3>Devotional: Curt Holman</h3>
-                        <time datetime="2026-06-23">T, June 23</time>
+                        <span class="event-date">T, June 23</span>
                     </div>
-                </article>
+                </div>
             </div>
             <a class="calendar-button" href="https://calendar.byu.edu/">Full Events Calendar</a>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <a class="chat" href="#" aria-label="Open live chat">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
+    <a class="chat" href="#">
+        <svg viewBox="0 0 24 24">
             <path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path>
         </svg>
         <span>Live Chat</span>
