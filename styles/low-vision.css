@@ -148,6 +148,9 @@ p {
 .website-frame {
   overflow: hidden;
   padding: 18px;
+  position: relative;
+  --eye-x: 50%;
+  --eye-y: 50%;
 }
 
 /* Buttons */
@@ -278,8 +281,23 @@ input[type="password"]:focus {
 .overlay-layer {
   position: absolute;
   inset: 0;
+  z-index: 20;
   pointer-events: none;
   border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.simulation-layer > *:not(.overlay-layer):not(.blindness-toolbar) {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay-glare,
+.overlay-tunnel,
+.overlay-scotoma {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .site-header,
