@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css">
-    <script defer src="./scripts/home.js"></script>
-    <title>Home</title>
-</head>
-<body>  
-    <div class="container">
-        <h1>Accessibility Simulator</h1>
-        <p class="subtitle">Use these pages to explore different accessibility issues and how they affect the user experience. We hope
-            this will help you prioritize accessibility in your development process.
-        </p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/main.css">
+        <script defer src="./scripts/home.js"></script>
+        <title>Home</title>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <h1>Accessibility Simulator</h1>
+                <p class="subtitle">Use these pages to explore different accessibility issues and how they affect the user experience. We hope
+                    this will help you prioritize accessibility in your development process.
+                </p>
 
-        <h2>Explore</h2>
-        <p class="subtitle">Explore a wide range of accessibility issues in a sample site.</p>
-        <div class="card-grid">
-            <div class="card" data-category="low vision">
-                <h2>Vision Impairments</h2>
-                <h4>Experience different vision impairments.</h4>
+                <h2>Explore</h2>
+                <p class="subtitle">Explore a wide range of accessibility issues in a sample site.</p>
+                <div class="card-grid">
+                    <div class="card" data-category="low vision">
+                        <h2>Vision Impairment</h2>
+                        <p>Experience different vision impairments.</p>
+                    </div>
+
+                    <div class="card" data-category="color blindness">
+                        <h2>Color Blindness</h2>
+                        <p>Experience different color perceptions.</p>
+                    </div>
+
+                    <div class="card" data-category="motor impairment">
+                        <h2>Tremors</h2>
+                        <p>Experience motor tremors.</p>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <h2>Experience</h2>
+                <p class="subtitle">Navigate a website with a specific impairment.</p>
+                <div class="card-grid">
+                    <a class="card" data-category="screen reader demo" href="./pages/blind.html">
+                        <h2>General Accessibility</h2>
+                        <p>Use a screen reader with accessible and non-accessible websites.</p>
+                    </a>
+
+                    <a class="card" data-category="colorblind demo" href="./pages/calendar.html">
+                        <h2>Colorblind Navigation</h2>
+                        <p>Use a calendar with color blindness.</p>
+                    </a>
+
+                    <a class="card" data-category="motor impairment demo" href="./pages/byu-motor.html">
+                        <h2>Motor Impairment</h2>
+                        <p>Explore a catalog with a motor impairment.</p>
+                    </a>
+                </div>
             </div>
-
-            <div class="card" data-category="Color Blindness">
-                <h2>Color Blindness</h2>
-                <h4>Experience different color perceptions.</h4>
-            </div>
-        </div>
-
-        <br>
-        <br>    
-
-        <h2>Experience</h2>
-        <p class="subtitle">Navigate a website with a specific impairment.</p>
-        <div class="card-grid">
-            <a class="card" data-category="Motor Impairment" href="./pages/byu-motor.html">
-                <h2>Motor Impairment</h2>
-                <h4>Explore a catalog with a motor impairment.</h4>
-            </a>
-
-            <a class="card" data-category="Screen Reader Demo" href="./blind.html">
-                <h2>Blindness</h2>
-                <h4>Use a screen reader with accessible and non-accessible websites.</h4>
-            </a>
-
-            <a class="card" data-category="Color Blindness" href="./pages/calendar.html">
-                <h2>Color Blindness</h2>
-                <h4>Use a calendar with color blindness.</h4>
-            </a>
-        </div>
-    </div>
-</body>
+        </main>
+    </body>
 </html>
