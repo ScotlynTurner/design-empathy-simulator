@@ -243,3 +243,4 @@ elements.lowVisionModeBtn.addEventListener("click", () => {
 });
 
 applyPreset("moderate");
+
