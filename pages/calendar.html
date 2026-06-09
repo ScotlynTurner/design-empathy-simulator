@@ -9,173 +9,175 @@
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute">
-  <defs>
+    <defs>
 
-    <filter id="deuteranopia">
-      <feColorMatrix type="matrix"
-        values="
-          0.367 0.861 -0.228 0 0
-          0.280 0.673  0.047 0 0
-         -0.012 0.043  0.969 0 0
-          0     0      0     1 0" />
-    </filter>
+      <filter id="deuteranopia">
+        <feColorMatrix type="matrix"
+          values="
+            0.367 0.861 -0.228 0 0
+            0.280 0.673  0.047 0 0
+          -0.012 0.043  0.969 0 0
+            0     0      0     1 0" />
+      </filter>
 
-    <filter id="protanopia">
-      <feColorMatrix type="matrix"
-        values="
-          0.152 1.053 -0.205 0 0
-          0.115 0.786  0.099 0 0
-         -0.004 -0.048 1.052 0 0
-          0     0      0     1 0" />
-    </filter>
+      <filter id="protanopia">
+        <feColorMatrix type="matrix"
+          values="
+            0.152 1.053 -0.205 0 0
+            0.115 0.786  0.099 0 0
+          -0.004 -0.048 1.052 0 0
+            0     0      0     1 0" />
+      </filter>
 
-    <filter id="tritanopia">
-      <feColorMatrix type="matrix"
-        values="
-          1.255 -0.076 -0.179 0 0
-         -0.078  0.931  0.148 0 0
-          0.005  0.691  0.304 0 0
-          0      0      0     1 0" />
-    </filter>
+      <filter id="tritanopia">
+        <feColorMatrix type="matrix"
+          values="
+            1.255 -0.076 -0.179 0 0
+          -0.078  0.931  0.148 0 0
+            0.005  0.691  0.304 0 0
+            0      0      0     1 0" />
+      </filter>
 
-    <filter id="achromatopsia">
-      <feColorMatrix type="matrix"
-        values="
-          0.299 0.587 0.114 0 0
-          0.299 0.587 0.114 0 0
-          0.299 0.587 0.114 0 0
-          0     0     0     1 0" />
-    </filter>
+      <filter id="achromatopsia">
+        <feColorMatrix type="matrix"
+          values="
+            0.299 0.587 0.114 0 0
+            0.299 0.587 0.114 0 0
+            0.299 0.587 0.114 0 0
+            0     0     0     1 0" />
+      </filter>
 
-  </defs>
-</svg>
-  <header class="topbar">
-    <div class="brand">BYU</div>
-    <div class="divider"></div>
-    <div class="site-title">Academic Calendar</div>
-  </header>
+    </defs>
+  </svg>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">BYU</div>
+      <div class="divider"></div>
+      <div class="site-title">Academic Calendar</div>
+    </header>
 
-  <nav class="subnav">
-    <a href="#" class="active">Home</a>
-  </nav>
+    <nav class="subnav">
+      <a href="#" class="active">Home</a>
+    </nav>
 
-  <main class="page">
-    <section class="hero">
-      <h1>Academic Calendar</h1>
-      <div class="controls">
-        <select aria-label="Year">
-          <option selected>2026</option>
-        </select>
-        <button>LIST VIEW</button>
-      </div>
-    </section>
+    <main class="page">
+      <section class="hero">
+        <h1>Academic Calendar</h1>
+        <div class="controls">
+          <select aria-label="Year">
+            <option selected>2026</option>
+          </select>
+          <button>LIST VIEW</button>
+        </div>
+      </section>
 
-    <div class="content-grid">
-      <section class="calendar-wrap" aria-label="2026 academic calendar">
-        <div id="calendarGrid" class="calendar-grid"></div>
+      <div class="content-grid">
+        <section class="calendar-wrap" aria-label="2026 academic calendar">
+          <div id="calendarGrid" class="calendar-grid"></div>
 
-        <section class="legend-area">
-          <div class="legend-block">
-            <h2>COLOR KEY</h2>
-            <div class="legend-row"><span class="swatch event"></span>Event</div>
-            <div class="legend-row"><span class="swatch exam"></span>Exam Preparation Day</div>
-            <div class="legend-row"><span class="swatch final"></span>Final Exam Day</div>
-            <div class="legend-row"><span class="swatch graduation"></span>Graduation</div>
-            <div class="legend-row"><span class="swatch holiday-box">H</span>Holiday</div>
-            <div class="legend-row"><span class="swatch nso"></span>New Student Orientation</div>
-            <div class="legend-row"><span class="swatch education"></span>Education Week</div>
-            <div class="legend-row"><span class="swatch conference"></span>University Conference</div>
-          </div>
+          <section class="legend-area">
+            <div class="legend-block">
+              <h2>COLOR KEY</h2>
+              <div class="legend-row"><span class="swatch event"></span>Event</div>
+              <div class="legend-row"><span class="swatch exam"></span>Exam Preparation Day</div>
+              <div class="legend-row"><span class="swatch final"></span>Final Exam Day</div>
+              <div class="legend-row"><span class="swatch graduation"></span>Graduation</div>
+              <div class="legend-row"><span class="swatch holiday-box">H</span>Holiday</div>
+              <div class="legend-row"><span class="swatch nso"></span>New Student Orientation</div>
+              <div class="legend-row"><span class="swatch education"></span>Education Week</div>
+              <div class="legend-row"><span class="swatch conference"></span>University Conference</div>
+            </div>
 
-          <div class="legend-block deadlines">
-            <h2>ACADEMIC DEADLINES</h2>
-            <p><strong>W<sub>1</sub></strong> 1st Term or Spring Term Withdraw Deadline</p>
-            <p><strong>W<sub>2</sub></strong> 2nd Term or Summer Term Withdraw Deadline</p>
-            <p><strong>A</strong> Add/Drop Deadline (Full Semester &amp; 1st Term)</p>
-            <p><strong>A<sub>2</sub></strong> 2nd Term Add/Drop Deadline</p>
-            <p><strong>G<sub>S</sub></strong> Grade Submission Deadline</p>
-            <p><strong>G<sub>O</sub></strong> Grades Online for Students</p>
-            <p><strong>W</strong> Withdraw Deadline (Full Semester)</p>
-          </div>
+            <div class="legend-block deadlines">
+              <h2>ACADEMIC DEADLINES</h2>
+              <p><strong>W<sub>1</sub></strong> 1st Term or Spring Term Withdraw Deadline</p>
+              <p><strong>W<sub>2</sub></strong> 2nd Term or Summer Term Withdraw Deadline</p>
+              <p><strong>A</strong> Add/Drop Deadline (Full Semester &amp; 1st Term)</p>
+              <p><strong>A<sub>2</sub></strong> 2nd Term Add/Drop Deadline</p>
+              <p><strong>G<sub>S</sub></strong> Grade Submission Deadline</p>
+              <p><strong>G<sub>O</sub></strong> Grades Online for Students</p>
+              <p><strong>W</strong> Withdraw Deadline (Full Semester)</p>
+            </div>
 
-          <div class="legend-block deadlines">
-            <h2>OTHER DATES</h2>
-            <p><strong>C<sub>M</sub></strong> Commencement</p>
-            <p><strong>T<sub>2</sub></strong> First Day of 2nd Term</p>
-            <p><strong>C<sub>V</sub></strong> Convocation</p>
-            <p><strong>F</strong> Friday Instruction</p>
-            <p><strong>R</strong> Instructor Ratings (Ends on Exam Prep Day)</p>
-            <p><strong>T<sub>1</sub></strong> Last Day of 1st Term</p>
-            <p><strong>L</strong> Last Day of Class</p>
-            <p><strong>M</strong> Monday Instruction</p>
-            <p><strong>S</strong> Start of Classes (1st day)</p>
-            <p><strong>N<sub>C</sub></strong> No Classes</p>
-            <p><strong>W<sub>I</sub></strong> Wednesday Instruction</p>
-          </div>
+            <div class="legend-block deadlines">
+              <h2>OTHER DATES</h2>
+              <p><strong>C<sub>M</sub></strong> Commencement</p>
+              <p><strong>T<sub>2</sub></strong> First Day of 2nd Term</p>
+              <p><strong>C<sub>V</sub></strong> Convocation</p>
+              <p><strong>F</strong> Friday Instruction</p>
+              <p><strong>R</strong> Instructor Ratings (Ends on Exam Prep Day)</p>
+              <p><strong>T<sub>1</sub></strong> Last Day of 1st Term</p>
+              <p><strong>L</strong> Last Day of Class</p>
+              <p><strong>M</strong> Monday Instruction</p>
+              <p><strong>S</strong> Start of Classes (1st day)</p>
+              <p><strong>N<sub>C</sub></strong> No Classes</p>
+              <p><strong>W<sub>I</sub></strong> Wednesday Instruction</p>
+            </div>
+          </section>
         </section>
-      </section>
 
-      <aside class="sidebar">
+        <aside class="sidebar">
 
-        <div class="cvd-panel">
-  <h3>Color Vision Simulation</h3>
+          <div class="cvd-panel">
+    <h3>Color Vision Simulation</h3>
 
-  <button class="cvd-btn active" data-cvd="deuteranopia">
-    Deuteranopia
-  </button>
+    <button class="cvd-btn active" data-cvd="deuteranopia">
+      Deuteranopia
+    </button>
 
-  <button class="cvd-btn" data-cvd="protanopia">
-    Protanopia
-  </button>
+    <button class="cvd-btn" data-cvd="protanopia">
+      Protanopia
+    </button>
 
-  <button class="cvd-btn" data-cvd="tritanopia">
-    Tritanopia
-  </button>
+    <button class="cvd-btn" data-cvd="tritanopia">
+      Tritanopia
+    </button>
 
-  <button class="cvd-btn" data-cvd="achromatopsia">
-    Achromatopsia
-  </button>
+    <button class="cvd-btn" data-cvd="achromatopsia">
+      Achromatopsia
+    </button>
 
-  <button class="cvd-btn" data-cvd="normal">
-    Normal Vision
-  </button>
-</div>
-        <button class="subscribe">SUBSCRIBE</button>
-        <div class="term-card winter"><h3>Winter Semester</h3><p>Jan 07 - Apr 15</p><dl><dt>Jan 14</dt><dd>Add/Drop Deadline</dd><dt>Apr 01</dt><dd>Withdraw Deadline</dd></dl></div>
-        <div class="term-card spring"><h3>Spring Term</h3><p>Apr 28 - Jun 15</p><dl><dt>May 05</dt><dd>Add/Drop Deadline</dd><dt>Jun 02</dt><dd>Withdraw Deadline</dd></dl></div>
-        <div class="term-card summer"><h3>Summer Term</h3><p>Jun 22 - Aug 10</p><dl><dt>Jun 29</dt><dd>Add/Drop Deadline</dd><dt>Jul 28</dt><dd>Withdraw Deadline</dd></dl></div>
-        <div class="term-card fall"><h3>Fall Semester</h3><p>Sep 02 - Dec 10</p><dl><dt>Sep 10</dt><dd>Add/Drop Deadline</dd><dt>Nov 24</dt><dd>Withdraw Deadline</dd></dl></div>
-      </aside>
-    </div>
-  </main>
+    <button class="cvd-btn" data-cvd="normal">
+      Normal Vision
+    </button>
+  </div>
+          <button class="subscribe">SUBSCRIBE</button>
+          <div class="term-card winter"><h3>Winter Semester</h3><p>Jan 07 - Apr 15</p><dl><dt>Jan 14</dt><dd>Add/Drop Deadline</dd><dt>Apr 01</dt><dd>Withdraw Deadline</dd></dl></div>
+          <div class="term-card spring"><h3>Spring Term</h3><p>Apr 28 - Jun 15</p><dl><dt>May 05</dt><dd>Add/Drop Deadline</dd><dt>Jun 02</dt><dd>Withdraw Deadline</dd></dl></div>
+          <div class="term-card summer"><h3>Summer Term</h3><p>Jun 22 - Aug 10</p><dl><dt>Jun 29</dt><dd>Add/Drop Deadline</dd><dt>Jul 28</dt><dd>Withdraw Deadline</dd></dl></div>
+          <div class="term-card fall"><h3>Fall Semester</h3><p>Sep 02 - Dec 10</p><dl><dt>Sep 10</dt><dd>Add/Drop Deadline</dd><dt>Nov 24</dt><dd>Withdraw Deadline</dd></dl></div>
+        </aside>
+      </div>
+    </main>
 
-  <footer class="footer-main">
-    <div class="footer-content">
-      <section>
-        <h4>CONTACT</h4>
-        <p>Enrollment Services<br>Brigham Young University<br>3326 WSC<br>Provo, Utah 84602</p>
-        <button>Contact Us</button>
-        <p class="hours"><strong>OPEN</strong><br>M-F 8:00 a.m. to 5:00 p.m.<br><strong>CLOSED</strong><br>T &amp; TH 10:45 a.m. to 12:00 p.m.<br><strong>HOLIDAY HOURS</strong><br>Closed June 19 (Juneteenth)</p>
-      </section>
-      <section>
-        <h4>RESOURCES</h4>
-        <a>FAQs</a><a>Admissions Application</a><a>FAFSA.gov</a><a>Mission Deferment</a><a>My Financial Center</a><a>MyMAP</a><a>My Aid Dashboard</a><a>Resources &amp; Workshops</a>
-      </section>
-      <section>
-        <h4>ABOUT</h4>
-        <a>About Us</a><a>Counselors</a><a>SMS Terms &amp; Conditions</a>
-      </section>
-      <section>
-        <h4>SOCIAL</h4>
-        <div class="social"><span>◎</span><span>f</span><span>𝕏</span><span>▶</span></div>
-      </section>
-    </div>
-  </footer>
+    <footer class="footer-main">
+      <div class="footer-content">
+        <section>
+          <h4>CONTACT</h4>
+          <p>Enrollment Services<br>Brigham Young University<br>3326 WSC<br>Provo, Utah 84602</p>
+          <button>Contact Us</button>
+          <p class="hours"><strong>OPEN</strong><br>M-F 8:00 a.m. to 5:00 p.m.<br><strong>CLOSED</strong><br>T &amp; TH 10:45 a.m. to 12:00 p.m.<br><strong>HOLIDAY HOURS</strong><br>Closed June 19 (Juneteenth)</p>
+        </section>
+        <section>
+          <h4>RESOURCES</h4>
+          <a>FAQs</a><a>Admissions Application</a><a>FAFSA.gov</a><a>Mission Deferment</a><a>My Financial Center</a><a>MyMAP</a><a>My Aid Dashboard</a><a>Resources &amp; Workshops</a>
+        </section>
+        <section>
+          <h4>ABOUT</h4>
+          <a>About Us</a><a>Counselors</a><a>SMS Terms &amp; Conditions</a>
+        </section>
+        <section>
+          <h4>SOCIAL</h4>
+          <div class="social"><span>◎</span><span>f</span><span>𝕏</span><span>▶</span></div>
+        </section>
+      </div>
+    </footer>
 
-  <footer class="footer-bottom">
-    <h2>BRIGHAM YOUNG UNIVERSITY</h2>
-    <p>Provo, UT 84602, USA | © 2026, All Rights Reserved</p>
-    <p>Privacy Notice | Cookie Preferences</p>
-  </footer>
+    <footer class="footer-bottom">
+      <h2>BRIGHAM YOUNG UNIVERSITY</h2>
+      <p>Provo, UT 84602, USA | © 2026, All Rights Reserved</p>
+      <p>Privacy Notice | Cookie Preferences</p>
+    </footer>
+  </div>
 </body>
 </html>

@@ -552,6 +552,22 @@ body.cvd-achromatopsia .sidebar {
   filter: url(#achromatopsia);
 }
 
+body.cvd-deuteranopia .app {
+  filter: url(#deuteranopia);
+}
+
+body.cvd-protanopia .app {
+  filter: url(#protanopia);
+}
+
+body.cvd-tritanopia .app {
+  filter: url(#tritanopia);
+}
+
+body.cvd-achromatopsia .app {
+  filter: url(#achromatopsia);
+}
+
 @media (max-width: 900px) {
   .page { 
     padding: 0 14px 30px; 
