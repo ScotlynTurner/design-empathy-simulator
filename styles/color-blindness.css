@@ -1,0 +1,250 @@
+:root {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --accent: #2563eb;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    background: var(--panel);
+}
+
+.main {
+    padding: 20px;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.controls {
+    display: grid;
+    gap: 10px;
+}
+
+button {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: #f9fafb;
+    color: var(--text);
+    padding: 11px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+}
+
+button:hover { border-color: #9ca3af; }
+
+button.active {
+    background: #e8efff;
+    border-color: #bcd0ff;
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: #3730a3;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.preview {
+    display: grid;
+    gap: 16px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    filter: var(--sim-filter, none);
+}
+
+.card-body {
+    padding: 14px;
+}
+
+.card-body p {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.sample-block {
+    display: grid;
+    gap: 12px;
+}
+
+.sample-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.swatch {
+    width: 90px;
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    filter: var(--sim-filter, none);
+}
+
+.swatch.red { background: #ef4444; }
+.swatch.green { background: #22c55e; }
+.swatch.blue { background: #3b82f6; }
+.swatch.yellow { background: #facc15; }
+
+.alert {
+    background: #fff7ed;
+    color: #9a3412;
+    border: 1px solid #fdba74;
+    padding: 14px;
+    border-radius: 14px;
+    filter: var(--sim-filter, none);
+}
+
+.table-wrap {
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+}
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    filter: var(--sim-filter, none);
+}
+
+th {
+    background: #f9fafb;
+    font-size: 0.92rem;
+}
+
+.sample-link {
+    color: #2563eb;
+    text-decoration: underline;
+    filter: var(--sim-filter, none);
+}
+
+.sim-area {
+    --sim-filter: none;
+    display: grid;
+    gap: 16px;
+}
+
+.filters {
+    display: grid;
+    gap: 14px;
+}
+
+.range-row {
+    display: grid;
+    gap: 6px;
+}
+
+.range-row label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.tiny {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+@media (max-width: 900px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+}

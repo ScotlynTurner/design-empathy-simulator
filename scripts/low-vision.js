@@ -6,7 +6,6 @@ const presets = {
     brightness: 105,
     saturate: 92,
     glare: 6,
-    vignette: 4,
     tunnel: 0,
     scotoma: 0,
     zoom: 100,
@@ -18,7 +17,6 @@ const presets = {
     brightness: 110,
     saturate: 84,
     glare: 14,
-    vignette: 10,
     tunnel: 0,
     scotoma: 0,
     zoom: 100,
@@ -30,7 +28,6 @@ const presets = {
     brightness: 115,
     saturate: 72,
     glare: 24,
-    vignette: 18,
     tunnel: 0,
     scotoma: 0,
     zoom: 102,
@@ -42,7 +39,6 @@ const presets = {
     brightness: 125,
     saturate: 78,
     glare: 34,
-    vignette: 10,
     tunnel: 0,
     scotoma: 0,
     zoom: 100,
@@ -54,7 +50,17 @@ const presets = {
     brightness: 108,
     saturate: 90,
     glare: 8,
-    vignette: 8,
+    tunnel: 0,
+    scotoma: 1,
+    zoom: 100,
+  },
+  blind: {
+    label: "Complete Blindness",
+    blur: 0,
+    contrast: 1,
+    brightness: 0,
+    saturate: 0,
+    glare: 0,
     tunnel: 0,
     scotoma: 1,
     zoom: 100,
@@ -75,7 +81,6 @@ const elements = {
   brightness: document.getElementById("brightness"),
   saturate: document.getElementById("saturate"),
   glare: document.getElementById("glare"),
-  vignette: document.getElementById("vignette"),
   tunnel: document.getElementById("tunnel"),
   scotoma: document.getElementById("scotoma"),
   zoom: document.getElementById("zoom"),
@@ -84,11 +89,26 @@ const elements = {
   brightnessValue: document.getElementById("brightnessValue"),
   saturateValue: document.getElementById("saturateValue"),
   glareValue: document.getElementById("glareValue"),
-  vignetteValue: document.getElementById("vignetteValue"),
   tunnelValue: document.getElementById("tunnelValue"),
   scotomaValue: document.getElementById("scotomaValue"),
   zoomValue: document.getElementById("zoomValue"),
 };
+
+const frame = document.querySelector(".website-frame");
+
+frame.addEventListener("mousemove", (e) => {
+  const rect = frame.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  frame.style.setProperty("--eye-x", `${x}%`);
+  frame.style.setProperty("--eye-y", `${y}%`);
+});
+
+frame.addEventListener("mouseleave", () => {
+  frame.style.setProperty("--eye-x", "50%");
+  frame.style.setProperty("--eye-y", "50%");
+});
 
 let currentPreset = "moderate";
 let customMode = false;
@@ -106,7 +126,6 @@ function applyPreset(name) {
   elements.brightness.value = preset.brightness;
   elements.saturate.value = preset.saturate;
   elements.glare.value = preset.glare;
-  elements.vignette.value = preset.vignette;
   elements.tunnel.value = preset.tunnel;
   elements.scotoma.value = preset.scotoma;
   elements.zoom.value = preset.zoom;
@@ -128,7 +147,6 @@ function updateLabels() {
   elements.brightnessValue.textContent = `${elements.brightness.value}%`;
   elements.saturateValue.textContent = `${elements.saturate.value}%`;
   elements.glareValue.textContent = `${elements.glare.value}%`;
-  elements.vignetteValue.textContent = `${elements.vignette.value}%`;
   elements.tunnelValue.textContent = `${elements.tunnel.value}%`;
   elements.scotomaValue.textContent = `${elements.scotoma.value}`;
   elements.zoomValue.textContent = `${elements.zoom.value}%`;
@@ -140,7 +158,6 @@ function updateSimulation() {
   const brightness = Number(elements.brightness.value);
   const saturate = Number(elements.saturate.value);
   const glare = Number(elements.glare.value);
-  const vignette = Number(elements.vignette.value);
   const tunnel = Number(elements.tunnel.value);
   const scotoma = Number(elements.scotoma.value);
   const zoom = Number(elements.zoom.value);
@@ -169,30 +186,34 @@ function updateSimulation() {
 
   elements.simulationLayer.style.transform = `scale(${zoom / 100})`;
 
-  const glareAlpha = glare / 220;
-  const glareFade = glare / 180;
-  const vignetteAlpha = vignette / 120;
-  const tunnelAlpha = tunnel / 100;
-  const scotomaAlpha = scotoma ? 0.34 : 0;
+  const glareAlpha = glare / 120;
+  const glareFade = glare / 100;
+  const tunnelAlpha = tunnel / 50;
+  const scotomaAlpha = scotoma ? 0.5 : 0;
 
   elements.overlayLayer.innerHTML = `
     <div class="overlay-glare" style="
       background:
-        radial-gradient(circle at center, rgba(255,255,255,${glareAlpha}), rgba(255,255,255,0) 38%),
-        linear-gradient(to bottom, rgba(255,255,255,${glareFade}), rgba(255,255,255,0.02));
+        radial-gradient(circle at var(--eye-x) var(--eye-y),
+          rgba(255,255,255,${glareAlpha}),
+          rgba(255,255,255,0) 38%),
+        linear-gradient(to bottom,
+          rgba(255,255,255,${glareFade}),
+          rgba(255,255,255,0.02));
     "></div>
-
-    <div class="overlay-vignette" style="
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,0) 58%, rgba(15,23,42,${vignetteAlpha}));
-    "></div>
-
+ 
+  
     ${tunnel > 0 ? `<div class="overlay-tunnel" style="
-      background: radial-gradient(circle at center, rgba(255,255,255,0) 58%, rgba(15,23,42,${tunnelAlpha}));
+      background: radial-gradient(circle at var(--eye-x) var(--eye-y),
+        rgba(255,255,255,0) 1%,
+        rgba(15,23,42,${tunnelAlpha}));
     "></div>` : ""}
-
+  
     ${scotoma ? `<div class="overlay-scotoma" style="
-      background: radial-gradient(circle at center, rgba(0,0,0,${scotomaAlpha}) 0%, rgba(0,0,0,${scotomaAlpha}) 14%, rgba(0,0,0,0) 17%);
+      background: radial-gradient(circle at var(--eye-x) var(--eye-y),
+        rgba(0,0,0,${scotomaAlpha}) 0%,
+        rgba(0,0,0,${scotomaAlpha}) 14%,
+        rgba(0,0,0,0) 17%);
     "></div>` : ""}
   `;
 
@@ -215,7 +236,6 @@ elements.presetButtons.forEach((btn) => {
   elements.brightness,
   elements.saturate,
   elements.glare,
-  elements.vignette,
   elements.tunnel,
   elements.scotoma,
   elements.zoom

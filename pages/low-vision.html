@@ -25,7 +25,6 @@
             <div class="eyebrow">Presets</div>
             <h2>Choose a vision profile</h2>
           </div>
-          <button id="toggleControlsBtn" class="ghost-btn" type="button">Hide</button>
         </div>
 
         <div class="preset-list">
@@ -34,6 +33,7 @@
           <button class="preset-btn" data-preset="severe" type="button">Severe low vision</button>
           <button class="preset-btn" data-preset="cataracts" type="button">Cataracts / glare</button>
           <button class="preset-btn" data-preset="macular" type="button">Macular degeneration</button>
+          <button class="preset-btn" data-preset="blind" type="button">Complete Blindness</button>
         </div>
       </div>
 
@@ -44,44 +44,38 @@
 
         <label class="slider-row">
           <span>Blur</span>
-          <span class="value" id="blurValue">1.8px</span>
-          <input id="blur" type="range" min="0" max="10" step="0.1" value="1.8" />
+          <span class="value" id="blurValue">0px</span>
+          <input id="blur" type="range" min="0" max="15" step="0.1" value="0" />
         </label>
 
         <label class="slider-row">
           <span>Contrast</span>
-          <span class="value" id="contrastValue">65%</span>
-          <input id="contrast" type="range" min="30" max="100" step="1" value="65" />
+          <span class="value" id="contrastValue">50%</span>
+          <input id="contrast" type="range" min="1" max="100" step="1" value="50" />
         </label>
 
         <label class="slider-row">
           <span>Brightness</span>
-          <span class="value" id="brightnessValue">112%</span>
-          <input id="brightness" type="range" min="80" max="150" step="1" value="112" />
+          <span class="value" id="brightnessValue">100%</span>
+          <input id="brightness" type="range" min="0" max="200" step="1" value="100" />
         </label>
 
         <label class="slider-row">
           <span>Saturation</span>
           <span class="value" id="saturateValue">84%</span>
-          <input id="saturate" type="range" min="50" max="120" step="1" value="84" />
+          <input id="saturate" type="range" min="0" max="150" step="1" value="84" />
         </label>
 
         <label class="slider-row">
           <span>Glare</span>
-          <span class="value" id="glareValue">16%</span>
-          <input id="glare" type="range" min="0" max="60" step="1" value="16" />
-        </label>
-
-        <label class="slider-row">
-          <span>Vignette</span>
-          <span class="value" id="vignetteValue">22%</span>
-          <input id="vignette" type="range" min="0" max="60" step="1" value="22" />
+          <span class="value" id="glareValue">0%</span>
+          <input id="glare" type="range" min="0" max="100" step="1" value="0" />
         </label>
 
         <label class="slider-row">
           <span>Tunnel vision</span>
-          <span class="value" id="tunnelValue">6%</span>
-          <input id="tunnel" type="range" min="0" max="40" step="1" value="6" />
+          <span class="value" id="tunnelValue">0%</span>
+          <input id="tunnel" type="range" min="0" max="255" step="1" value="0" />
         </label>
 
         <label class="slider-row">
@@ -93,7 +87,7 @@
         <label class="slider-row">
           <span>Zoom</span>
           <span class="value" id="zoomValue">110%</span>
-          <input id="zoom" type="range" min="10" max="250" step="1" value="100" />
+          <input id="zoom" type="range" min="20" max="250" step="1" value="100" />
         </label>
       </div>
     </aside>
@@ -111,6 +105,8 @@
             <button id="normalModeBtn" type="button">Normal</button>
             <button id="lowVisionModeBtn" type="button" class="active">Low vision</button>
         </div>
+
+        <div id="srAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
       </div>
 
       <div class="website-frame">
