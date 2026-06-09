@@ -166,7 +166,7 @@ button {
 
 .day {
   min-height: 34px;
-  border-top: 1px solid rgba(245,166,35,.85);
+  border-top: 2px solid #e6e6e6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,7 +339,7 @@ button {
   width: 26px; 
   height: 16px; 
   margin-right: 8px; 
-  display: inline-block; 
+
 }
 
 .swatch.event { background: var(--event); }
@@ -451,6 +451,62 @@ button {
   font-size: 11px; 
   font-weight: 700; 
 }
+
+.day.winter {
+  background: var(--winter);
+  border-top-color: #f4d88d;
+}
+
+.day.spring {
+  background: var(--spring);
+  border-top-color: #9fc3e8;
+}
+
+.day.summer {
+  background: var(--summer);
+  border-top-color: #f2b68e;
+}
+
+.day.fall {
+  background: var(--fall);
+  border-top-color: #a8cf93;
+}
+
+.day.event {
+  background: var(--event);
+  border-top-color: #f0dca8;
+}
+
+.day.exam {
+  background: var(--exam);
+  border-top-color: #d5a9c4;
+}
+
+.day.final {
+  background: var(--final);
+  border-top-color: #c98aad;
+}
+
+.day.graduation {
+  background: var(--graduation);
+  border-top-color: #e9a276;
+}
+
+.day.nso {
+  background: var(--nso);
+  border-top-color: #8bcda4;
+}
+
+.day.education {
+  background: var(--education);
+  border-top-color: #8dc6d8;
+}
+
+.day.conference {
+  background: var(--conference);
+  border-top-color: #9bbce8;
+}
+
 
 @media (max-width: 900px) {
   .page { 
