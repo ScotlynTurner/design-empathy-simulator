@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Homepage Recreation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #001832;
+            --royal: #002e5d;
+            --button: #0047ba;
+            --ink: #222222;
+            --byu-blue: #0057b8;
+            --soft: #f7f7f7;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body > *:not(script) {
+            filter: blur(12px);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .top-bar {
+            position: relative;
+            z-index: 4;
+            height: 58px;
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .top-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: min(100%, 2048px);
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        .anniversary {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+
+        .anniversary .byu-small {
+            font-size: 1.55rem;
+            letter-spacing: -0.03em;
+        }
+
+        .anniversary .one-fifty {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .utility-links {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: #ffffff;
+            font-size: 0.98rem;
+            font-weight: 700;
+        }
+
+        .utility-links .divider {
+            opacity: 0.65;
+        }
+
+        .search-icon {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            margin-left: 14px;
+            border: 0;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .search-icon::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            border: 4px solid currentColor;
+            border-radius: 50%;
+        }
+
+        .search-icon::after {
+            content: "";
+            position: absolute;
+            left: 21px;
+            top: 21px;
+            width: 13px;
+            height: 4px;
+            border-radius: 99px;
+            background: currentColor;
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
+
+        .main-nav {
+            position: relative;
+            z-index: 3;
+            height: 96px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+        }
+
+        .nav-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: min(100%, 2048px);
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        .nav-group {
+            position: absolute;
+            top: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 58px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            transform: translateY(-50%);
+        }
+
+        .nav-group:first-child {
+            right: calc(50% + 250px);
+        }
+
+        .nav-group:last-child {
+            left: calc(50% + 250px);
+        }
+
+        .logo-panel {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            display: grid;
+            place-items: center;
+            width: 365px;
+            height: 200px;
+            padding-top: 24px;
+            color: #ffffff;
+            background: var(--royal);
+            transform: translateX(-50%);
+        }
+
+        .logo-panel strong {
+            display: block;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 4.15rem;
+            line-height: 0.95;
+            letter-spacing: 0.02em;
+        }
+
+        .logo-panel img {
+            display: block;
+            width: 190px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .logo-panel span {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.75rem;
+            line-height: 1.25;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-align: center;
+        }
+
+        .more-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 122px;
+            min-height: 61px;
+            padding: 14px 32px;
+            color: #ffffff;
+            background: var(--button);
+            border-radius: 2px;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+
+        .featured-stories {
+            padding: 138px 24px 74px;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .story-card .event-body {
+            min-height: 260px;
+        }
+
+        .story-card p {
+            max-width: 360px;
+            margin: 0 auto 24px;
+            color: #666666;
+            font-size: 1.05rem;
+            line-height: 1.45;
+        }
+
+        .story-card .more-button {
+            min-width: 104px;
+            min-height: 48px;
+            padding: 10px 24px;
+            font-size: 1rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(120px, 1fr));
+            gap: 22px;
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 64px 24px 30px;
+            text-align: center;
+        }
+
+        .quick-link {
+            display: grid;
+            justify-items: center;
+            gap: 24px;
+            color: #222222;
+            font-weight: 900;
+        }
+
+        .quick-link svg {
+            width: 68px;
+            height: 68px;
+            color: var(--byu-blue);
+        }
+
+        .quick-link img {
+            display: block;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .events {
+            padding: 78px 24px 74px;
+            background: #ffffff;
+            border-top: 1px solid #eeeeee;
+            text-align: center;
+        }
+
+        .section-title {
+            margin: 0 0 48px;
+            font-size: 1.45rem;
+            letter-spacing: 0.25em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 1290px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .event-media {
+            display: block;
+            width: 100%;
+            height: 312px;
+            overflow: hidden;
+            background: #dddddd;
+        }
+
+        .event-media svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .event-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-body {
+            min-height: 180px;
+            padding: 34px 28px 26px;
+        }
+
+        .event-card h3 {
+            max-width: 330px;
+            margin: 0 auto 18px;
+            font-size: 1.7rem;
+            line-height: 1.18;
+            font-weight: 900;
+        }
+
+        .event-card time {
+            color: #777777;
+            font-size: 1.15rem;
+        }
+
+        .calendar-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 260px;
+            min-height: 58px;
+            margin-top: 47px;
+            padding: 14px 28px;
+            color: #ffffff;
+            background: var(--button);
+            border-radius: 3px;
+            font-size: 1.08rem;
+            font-weight: 900;
+        }
+
+        .chat {
+            position: fixed;
+            z-index: 8;
+            right: 28px;
+            bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 58px;
+            padding: 0 25px;
+            color: #ffffff;
+            background: #39424e;
+            border-radius: 29px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+            font-size: 1.08rem;
+            font-weight: 900;
+        }
+
+        .chat svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        @media (max-width: 900px) {
+            .top-inner {
+                padding: 0 18px;
+            }
+
+            .utility-links a,
+            .utility-links .divider {
+                display: none;
+            }
+
+            .main-nav {
+                height: auto;
+                min-height: 102px;
+                padding: 78px 16px 18px;
+            }
+
+            .nav-inner {
+                display: flex;
+                position: static;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px 28px;
+                padding: 0;
+            }
+
+            .nav-group {
+                position: static;
+                gap: 28px;
+                font-size: 1rem;
+                transform: none;
+            }
+
+            .logo-panel {
+                width: 230px;
+                height: 128px;
+            }
+
+            .logo-panel strong {
+                font-size: 2.55rem;
+            }
+
+            .logo-panel img {
+                width: 118px;
+            }
+
+            .logo-panel span {
+                margin-top: 10px;
+                font-size: 1rem;
+            }
+
+            .quick-links,
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links {
+                padding-top: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="top-inner">
+                <a class="anniversary" href="https://www.byu.edu/" aria-label="BYU 150">
+                    <span class="byu-small">BYU</span>
+                    <span class="one-fifty">150</span>
+                </a>
+                <div class="utility-links" aria-label="Utility navigation">
+                    <a href="https://my.byu.edu/">MyBYU</a>
+                    <span class="divider">|</span>
+                    <a href="https://learningsuite.byu.edu/">Learning Suite</a>
+                    <button class="search-icon" type="button" aria-label="Search"></button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+            <div class="nav-inner">
+                <div class="nav-group">
+                    <a href="https://www.byu.edu/about">About</a>
+                    <a href="https://www.byu.edu/admissions-aid">Admissions &amp; Aid</a>
+                </div>
+                <a class="logo-panel" href="https://www.byu.edu/" aria-label="Brigham Young University home">
+                    <div>
+                        <img src="./assets/byu/byu-logo-white-small.svg" alt="">
+                        <span>BRIGHAM YOUNG<br>UNIVERSITY</span>
+                    </div>
+                </a>
+                <div class="nav-group">
+                    <a href="https://www.byu.edu/academics">Academics</a>
+                    <a href="https://www.byu.edu/this-is-y">This is Y</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="featured-stories" aria-labelledby="stories-heading">
+            <h2 class="section-title" id="stories-heading">Featured Stories</h2>
+            <div class="event-grid">
+                <article class="event-card story-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/hero-unique-light.jpg" alt="BYU supermileage vehicle with students standing in a mountain landscape">
+                    </div>
+                    <div class="event-body">
+                        <h3>A Unique Light</h3>
+                        <p>BYU engineering students built a fuel-efficient supermileage vehicle and won the Shell Eco Marathon again.</p>
+                        <a class="more-button" href="https://news.byu.edu/intellect/the-best">More</a>
+                    </div>
+                </article>
+
+                            <h2 class="section-title" id="events-heading">Highlighted Events</h2>
+            <div class="event-grid">
+                <article class="event-card">
+                    <div class="event-media" aria-hidden="true">
+                        <img src="./assets/byu/event-jazz.jpg" alt="">
+                    </div>
+                    <div class="event-body">
+                        <h3>Free Concert: Jazz Combo</h3>
+                        <time datetime="2026-06-10">W, June 10</time>
+                    </div>
+                </article>
+
+                <article class="event-card story-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/hero-serve.jpg" alt="BYU student shaking hands with Marine Corps officers">
+                    </div>
+                    <div class="event-body">
+                        <h3>Go Forth to Serve</h3>
+                        <p>A BYU student was named the top U.S. Marine Corps officer candidate in the country.</p>
+                        <a class="more-button" href="https://news.byu.edu/byu-student-named-honor-graduate-as-top-u-s-marine-corps-officer-candidate-in-the-nation">More</a>
+                    </div>
+                </article>
+
+                <article class="event-card story-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/hero-devotional.jpg" alt="Students gathered for a BYU devotional">
+                    </div>
+                    <div class="event-body">
+                        <h3>Full Divine Potential</h3>
+                        <p>Each Tuesday, the BYU community gathers for devotionals and forums throughout spring and summer terms.</p>
+                        <a class="more-button" href="https://news.byu.edu/events/spring-summer-2026-devotional-and-forum-schedule">More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="quick-links" aria-label="Popular links">
+            <a class="quick-link" href="https://www.byu.edu/admissions-aid">
+                <img src="./assets/byu/byumonogram.svg" alt="">
+                <span>Apply</span>
+            </a>
+            <a class="quick-link" href="https://www.byu.edu/this-is-y">
+                <img src="./assets/byu/templeslc-icon.svg" alt="">
+                <span>Disciples of Christ</span>
+            </a>
+            <a class="quick-link" href="https://academiccalendar.byu.edu/">
+                <img src="./assets/byu/calendar-icon.svg" alt="">
+                <span>Academic Calendar</span>
+            </a>
+            <a class="quick-link" href="https://aims.byu.edu/">
+                <img src="./assets/byu/buildingmaeser-icon.svg" alt="">
+                <span>Becoming BYU</span>
+            </a>
+            <a class="quick-link" href="https://byucougars.com/">
+                <img src="./assets/byu/stretchy-athletics.svg" alt="">
+                <span>Athletics</span>
+            </a>
+        </section>
+
+        <section class="events" aria-labelledby="events-heading">
+            <h2 class="section-title" id="events-heading">Highlighted Events</h2>
+            <div class="event-grid">
+                <article class="event-card">
+                    <div class="event-media" aria-hidden="true">
+                        <img src="./assets/byu/event-jazz.jpg" alt="">
+                    </div>
+                    <div class="event-body">
+                        <h3>Free Concert: Jazz Combo</h3>
+                        <time datetime="2026-06-10">W, June 10</time>
+                    </div>
+                </article>
+
+                <article class="event-card">
+                    <div class="event-media" aria-hidden="true">
+                        <img src="./assets/byu/event-film.jpg" alt="">
+                    </div>
+                    <div class="event-body">
+                        <h3>Free Film: Jason and The Argonauts</h3>
+                        <time datetime="2026-06-12">F, June 12</time>
+                    </div>
+                </article>
+
+                <article class="event-card">
+                    <div class="event-media" aria-hidden="true">
+                        <img src="./assets/byu/event-devotional.jpg" alt="">
+                    </div>
+                    <div class="event-body">
+                        <h3>Devotional: Curt Holman</h3>
+                        <time datetime="2026-06-23">T, June 23</time>
+                    </div>
+                </article>
+            </div>
+            <a class="calendar-button" href="https://calendar.byu.edu/">Full Events Calendar</a>
+        </section>
+    </main>
+
+    <a class="chat" href="#" aria-label="Open live chat">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path>
+        </svg>
+        <span>Live Chat</span>
+    </a>
+
+</body>
+</html>

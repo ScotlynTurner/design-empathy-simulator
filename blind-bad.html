@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Homepage Recreation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #001832;
+            --royal: #002e5d;
+            --button: #0047ba;
+            --ink: #222222;
+            --byu-blue: #0057b8;
+            --soft: #f7f7f7;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body > *:not(script) {
+            filter: blur(12px);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .top-bar {
+            position: relative;
+            z-index: 4;
+            height: 58px;
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .top-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: min(100%, 2048px);
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        .anniversary {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+
+        .anniversary .byu-small {
+            font-size: 1.55rem;
+            letter-spacing: -0.03em;
+        }
+
+        .anniversary .one-fifty {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .utility-links {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: #ffffff;
+            font-size: 0.98rem;
+            font-weight: 700;
+        }
+
+        .utility-links .divider {
+            opacity: 0.65;
+        }
+
+        .search-icon {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            margin-left: 14px;
+            border: 0;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .search-icon::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            border: 4px solid currentColor;
+            border-radius: 50%;
+        }
+
+        .search-icon::after {
+            content: "";
+            position: absolute;
+            left: 21px;
+            top: 21px;
+            width: 13px;
+            height: 4px;
+            border-radius: 99px;
+            background: currentColor;
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
+
+        .main-nav {
+            position: relative;
+            z-index: 3;
+            height: 96px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+        }
+
+        .nav-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: min(100%, 2048px);
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        .nav-group {
+            position: absolute;
+            top: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 58px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            transform: translateY(-50%);
+        }
+
+        .nav-group:first-child {
+            right: calc(50% + 250px);
+        }
+
+        .nav-group:last-child {
+            left: calc(50% + 250px);
+        }
+
+        .logo-panel {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            display: grid;
+            place-items: center;
+            width: 365px;
+            height: 200px;
+            padding-top: 24px;
+            color: #ffffff;
+            background: var(--royal);
+            transform: translateX(-50%);
+        }
+
+        .logo-panel strong {
+            display: block;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 4.15rem;
+            line-height: 0.95;
+            letter-spacing: 0.02em;
+        }
+
+        .logo-panel img {
+            display: block;
+            width: 190px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .logo-panel span {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.75rem;
+            line-height: 1.25;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-align: center;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 758px;
+            overflow: hidden;
+            background: #111111;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            align-items: center;
+            opacity: 0;
+            background-position: center;
+            background-size: cover;
+            transition: opacity 0.35s ease;
+        }
+
+        .slide.is-active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .slide-light {
+            background-image:
+                linear-gradient(90deg, rgba(8, 21, 38, 0.15), rgba(8, 21, 38, 0.05)),
+                url("./assets/byu/hero-unique-light.jpg");
+        }
+
+        .slide-serve {
+            background-image:
+                linear-gradient(90deg, rgba(8, 21, 38, 0.18), rgba(8, 21, 38, 0.04)),
+                url("./assets/byu/hero-serve.jpg");
+        }
+
+        .slide-devotional {
+            background-image:
+                linear-gradient(90deg, rgba(8, 21, 38, 0.3), rgba(8, 21, 38, 0.08)),
+                url("./assets/byu/hero-devotional.jpg");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 2048px);
+            margin: 0 auto;
+            padding: 95px 8vw 60px 14.1vw;
+            color: #ffffff;
+        }
+
+        .hero-content.centered {
+            max-width: 900px;
+            padding-left: 0;
+            padding-right: 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            margin: 0 0 24px;
+            font-size: clamp(2.8rem, 4.2vw, 4rem);
+            line-height: 1.05;
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.36);
+        }
+
+        .hero-content.centered h1,
+        .hero-content.centered p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 0 27px;
+            font-size: clamp(1.35rem, 2vw, 1.82rem);
+            line-height: 1.38;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.36);
+        }
+
+        .more-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 122px;
+            min-height: 61px;
+            padding: 14px 32px;
+            color: #ffffff;
+            background: var(--button);
+            border-radius: 2px;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+
+        .hero-control {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            display: grid;
+            place-items: center;
+            width: 72px;
+            height: 72px;
+            border: 2px solid rgba(255, 255, 255, 0.86);
+            border-radius: 50%;
+            color: #ffffff;
+            background: transparent;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .hero-control.prev {
+            left: 24px;
+        }
+
+        .hero-control.next {
+            right: 24px;
+        }
+
+        .hero-control::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-top: 4px solid currentColor;
+            border-left: 4px solid currentColor;
+        }
+
+        .hero-control.prev::before {
+            transform: rotate(-45deg) translate(3px, 3px);
+        }
+
+        .hero-control.next::before {
+            transform: rotate(135deg) translate(3px, 3px);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(120px, 1fr));
+            gap: 22px;
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 64px 24px 30px;
+            text-align: center;
+        }
+
+        .quick-link {
+            display: grid;
+            justify-items: center;
+            gap: 24px;
+            color: #222222;
+            font-weight: 900;
+        }
+
+        .quick-link svg {
+            width: 68px;
+            height: 68px;
+            color: var(--byu-blue);
+        }
+
+        .quick-link img {
+            display: block;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .events {
+            padding: 78px 24px 74px;
+            background: #ffffff;
+            border-top: 1px solid #eeeeee;
+            text-align: center;
+        }
+
+        .section-title {
+            margin: 0 0 48px;
+            font-size: 1.45rem;
+            letter-spacing: 0.25em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 1290px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .event-media {
+            display: block;
+            width: 100%;
+            height: 312px;
+            overflow: hidden;
+            background: #dddddd;
+        }
+
+        .event-media svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .event-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-body {
+            min-height: 180px;
+            padding: 34px 28px 26px;
+        }
+
+        .event-card h3 {
+            max-width: 330px;
+            margin: 0 auto 18px;
+            font-size: 1.7rem;
+            line-height: 1.18;
+            font-weight: 900;
+        }
+
+        .event-date {
+            color: #777777;
+            font-size: 1.15rem;
+        }
+
+        .calendar-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 260px;
+            min-height: 58px;
+            margin-top: 47px;
+            padding: 14px 28px;
+            color: #ffffff;
+            background: var(--button);
+            border-radius: 3px;
+            font-size: 1.08rem;
+            font-weight: 900;
+        }
+
+        .chat {
+            position: fixed;
+            z-index: 8;
+            right: 28px;
+            bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 58px;
+            padding: 0 25px;
+            color: #ffffff;
+            background: #39424e;
+            border-radius: 29px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+            font-size: 1.08rem;
+            font-weight: 900;
+        }
+
+        .chat svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        @media (max-width: 900px) {
+            .top-inner {
+                padding: 0 18px;
+            }
+
+            .utility-links a,
+            .utility-links .divider {
+                display: none;
+            }
+
+            .main-nav {
+                height: auto;
+                min-height: 102px;
+                padding: 78px 16px 18px;
+            }
+
+            .nav-inner {
+                display: flex;
+                position: static;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px 28px;
+                padding: 0;
+            }
+
+            .nav-group {
+                position: static;
+                gap: 28px;
+                font-size: 1rem;
+                transform: none;
+            }
+
+            .logo-panel {
+                width: 230px;
+                height: 128px;
+            }
+
+            .logo-panel strong {
+                font-size: 2.55rem;
+            }
+
+            .logo-panel img {
+                width: 118px;
+            }
+
+            .logo-panel span {
+                margin-top: 10px;
+                font-size: 1rem;
+            }
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .hero-content {
+                padding: 100px 56px 52px;
+            }
+
+            .hero-control {
+                width: 54px;
+                height: 54px;
+            }
+
+            .quick-links,
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links {
+                padding-top: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top-bar">
+            <div class="top-inner">
+                <a class="anniversary" href="https://www.byu.edu/">
+                    <span class="byu-small">BYU</span>
+                    <span class="one-fifty">150</span>
+                </a>
+                <div class="utility-links">
+                    <a href="https://my.byu.edu/">MyBYU</a>
+                    <span class="divider">|</span>
+                    <a href="https://learningsuite.byu.edu/">Learning Suite</a>
+                    <button class="search-icon" type="button"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-nav">
+            <div class="nav-inner">
+                <div class="nav-group">
+                    <a href="https://www.byu.edu/about">About</a>
+                    <a href="https://www.byu.edu/admissions-aid">Admissions &amp; Aid</a>
+                </div>
+                <a class="logo-panel" href="https://www.byu.edu/">
+                    <div>
+                        <img src="./assets/byu/byu-logo-white-small.svg">
+                        <span>BRIGHAM YOUNG<br>UNIVERSITY</span>
+                    </div>
+                </a>
+                <div class="nav-group">
+                    <a href="https://www.byu.edu/academics">Academics</a>
+                    <a href="https://www.byu.edu/this-is-y">This is Y</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="hero">
+            <div class="slide slide-light is-active" data-slide>
+                <div class="hero-content">
+                    <h1>A Unique Light</h1>
+                    <p>Provo to New York City on a single tank of gas? BYU engineering students won the Shell Eco Marathon for the third time in four years, building the most fuel-efficient supermileage vehicle in all the land.</p>
+                    <a class="more-button" href="https://news.byu.edu/intellect/the-best">More</a>
+                </div>
+            </div>
+
+            <div class="slide slide-serve" data-slide>
+                <div class="hero-content centered">
+                    <h1>Go Forth to Serve</h1>
+                    <p>BYU students have earned some of the nation's highest honors, but for the first time ever, a BYU student has been named the top U.S. Marine Corps officer candidate in the country.</p>
+                    <a class="more-button" href="https://news.byu.edu/byu-student-named-honor-graduate-as-top-u-s-marine-corps-officer-candidate-in-the-nation">More</a>
+                </div>
+            </div>
+
+            <div class="slide slide-devotional" data-slide>
+                <div class="hero-content">
+                    <h1>Full Divine Potential</h1>
+                    <p>Every Tuesday at 11 a.m., the BYU community gathers together for an inspiring, faith-filled devotional. Click the button below to see the schedule of speakers for spring and summer terms.</p>
+                    <a class="more-button" href="https://news.byu.edu/events/spring-summer-2026-devotional-and-forum-schedule">More</a>
+                </div>
+            </div>
+
+            <button class="hero-control prev" type="button" data-prev></button>
+            <button class="hero-control next" type="button" data-next></button>
+        </div>
+
+        <div class="quick-links">
+            <a class="quick-link" href="https://www.byu.edu/admissions-aid">
+                <img src="./assets/byu/byumonogram.svg">
+                <span>Apply</span>
+            </a>
+            <a class="quick-link" href="https://www.byu.edu/this-is-y">
+                <img src="./assets/byu/templeslc-icon.svg">
+                <span>Disciples of Christ</span>
+            </a>
+            <a class="quick-link" href="https://academiccalendar.byu.edu/">
+                <img src="./assets/byu/calendar-icon.svg">
+                <span>Academic Calendar</span>
+            </a>
+            <a class="quick-link" href="https://aims.byu.edu/">
+                <img src="./assets/byu/buildingmaeser-icon.svg">
+                <span>Becoming BYU</span>
+            </a>
+            <a class="quick-link" href="https://byucougars.com/">
+                <img src="./assets/byu/stretchy-athletics.svg">
+                <span>Athletics</span>
+            </a>
+        </div>
+
+        <div class="events">
+            <h2 class="section-title" id="events-heading">Highlighted Events</h2>
+            <div class="event-grid">
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/event-jazz.jpg">
+                    </div>
+                    <div class="event-body">
+                        <h3>Free Concert: Jazz Combo</h3>
+                        <span class="event-date">W, June 10</span>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/event-film.jpg">
+                    </div>
+                    <div class="event-body">
+                        <h3>Free Film: Jason and The Argonauts</h3>
+                        <span class="event-date">F, June 12</span>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-media">
+                        <img src="./assets/byu/event-devotional.jpg">
+                    </div>
+                    <div class="event-body">
+                        <h3>Devotional: Curt Holman</h3>
+                        <span class="event-date">T, June 23</span>
+                    </div>
+                </div>
+            </div>
+            <a class="calendar-button" href="https://calendar.byu.edu/">Full Events Calendar</a>
+        </div>
+    </div>
+
+    <a class="chat" href="#">
+        <svg viewBox="0 0 24 24">
+            <path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path>
+        </svg>
+        <span>Live Chat</span>
+    </a>
+
+    <script>
+        const slides = Array.from(document.querySelectorAll("[data-slide]"));
+        const previous = document.querySelector("[data-prev]");
+        const next = document.querySelector("[data-next]");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle("is-active", slideIndex === currentSlide);
+            });
+        }
+
+        previous.addEventListener("click", () => showSlide(currentSlide - 1));
+        next.addEventListener("click", () => showSlide(currentSlide + 1));
+    </script>
+</body>
+</html>
