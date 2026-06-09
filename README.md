@@ -1,2 +1,6 @@
 # design-empathy-simulator
-A chrome extension to simulate disabilities affecting computer use.
+Experience navigating a website with different disabilities and impairments.
+
+## To Run
+- Clone the repo
+- Run ```node server.js```
