@@ -25,7 +25,6 @@
             <div class="eyebrow">Presets</div>
             <h2>Choose a vision profile</h2>
           </div>
-          <button id="toggleControlsBtn" class="ghost-btn" type="button">Hide</button>
         </div>
 
         <div class="preset-list">
@@ -110,11 +109,29 @@
         <div class="mode-toggle">
             <button id="normalModeBtn" type="button">Normal</button>
             <button id="lowVisionModeBtn" type="button" class="active">Low vision</button>
+            <button id="blindnessModeBtn" type="button" aria-pressed="false">Complete blindness</button>
         </div>
+
+        <div id="srAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
       </div>
 
       <div class="website-frame">
         <div id="simulationLayer" class="simulation-layer">
+
+          <div id="blindnessOverlay" class="blindness-overlay" hidden>
+            <h3>Complete blindness mode</h3>
+            <p id="blindnessSummary">
+              Audio guidance is on. Use Arrow keys to move between sections, Enter to read the current section, and Escape to stop speech.
+            </p>
+            <div class="blindness-shortcuts">
+              <div><strong>Left / Right</strong> or <strong>Up / Down</strong>: move between sections</div>
+              <div><strong>Enter</strong>: read focused section</div>
+              <div><strong>Escape</strong>: stop speech</div>
+              <div><strong>Alt + 1 / 2 / 3</strong>: switch modes</div>
+            </div>
+            <button id="readPageBtn" type="button" class="primary-btn">Read page summary</button>
+          </div>
+
           <div id="overlayLayer" class="overlay-layer" aria-hidden="true"></div>
 
           <header class="site-header">
