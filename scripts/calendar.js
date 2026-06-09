@@ -182,3 +182,34 @@ const calendarGrid = document.getElementById('calendarGrid');
 for (let month = 0; month < 12; month++) {
   calendarGrid.appendChild(makeMonth(month));
 }
+
+const buttons = document.querySelectorAll('.cvd-btn');
+
+function setSimulation(type) {
+  document.body.classList.remove(
+    'cvd-normal',
+    'cvd-deuteranopia',
+    'cvd-protanopia',
+    'cvd-tritanopia',
+    'cvd-achromatopsia'
+  );
+
+  if (type !== 'normal') {
+    document.body.classList.add(`cvd-${type}`);
+  }
+
+  buttons.forEach(btn => {
+    btn.classList.toggle(
+      'active',
+      btn.dataset.cvd === type
+    );
+  });
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setSimulation(btn.dataset.cvd);
+  });
+});
+
+setSimulation('deuteranopia');

@@ -507,6 +507,50 @@ button {
   border-top-color: #9bbce8;
 }
 
+.cvd-panel {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.cvd-panel h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+.cvd-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+  background: #e5e5e5;
+  color: #333;
+  cursor: pointer;
+}
+
+.cvd-btn.active {
+  background: #2f6295;
+  color: white;
+}
+
+body.cvd-deuteranopia .calendar-wrap,
+body.cvd-deuteranopia .sidebar {
+  filter: url(#deuteranopia);
+}
+
+body.cvd-protanopia .calendar-wrap,
+body.cvd-protanopia .sidebar {
+  filter: url(#protanopia);
+}
+
+body.cvd-tritanopia .calendar-wrap,
+body.cvd-tritanopia .sidebar {
+  filter: url(#tritanopia);
+}
+
+body.cvd-achromatopsia .calendar-wrap,
+body.cvd-achromatopsia .sidebar {
+  filter: url(#achromatopsia);
+}
 
 @media (max-width: 900px) {
   .page { 
