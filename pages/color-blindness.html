@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../styles/color-blindness.css">
+        <script defer src="../scripts/color-blindness.js"></script>
+        <title>Colorblindness Simulator</title>
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <div class="panel">
+                    <h1>Colorblindness simulator</h1>
+                    <p class="muted">Pick a color vision mode to preview how a page looks for different types of color blindness.</p>
+                </div>
+
+                <div class="panel">
+                    <h2>Modes</h2>
+                    <div class="controls" id="modes">
+                        <button class="active" data-mode="normal" type="button">Normal vision</button>
+                        <button data-mode="protanopia" type="button">Protanopia</button>
+                        <button data-mode="deuteranopia" type="button">Deuteranopia</button>
+                        <button data-mode="tritanopia" type="button">Tritanopia</button>
+                        <button data-mode="achromatopsia" type="button">Achromatopsia</button>
+                    </div>
+                </div>
+
+                <div class="panel filters">
+                    <h2>Adjustments</h2>
+                    <div class="range-row">
+                        <label for="strength"><span>Strength</span><span id="strengthValue">100%</span></label>
+                        <input id="strength" type="range" min="0" max="100" value="100" />
+                    </div>
+                    <p class="tiny">Lower strength blends the effect with the original colors.</p>
+                </div>
+            </aside>
+
+            <main class="main">
+                <div class="preview-top">
+                    <div>
+                        <span class="badge">Preview</span>
+                        <h2 style="margin: 8px 0 0;">Example page content</h2>
+                    </div>
+                    <div class="muted">Current mode: <strong id="currentModeLabel">Normal vision</strong></div>
+                </div>
+
+                <div class="sim-area" id="simArea">
+                    <div class="panel">
+                        <h3>Color Swatches</h3>
+                        <div class="sample-row">
+                            <span class="swatch red"></span>
+                            <span class="swatch green"></span>
+                            <span class="swatch blue"></span>
+                            <span class="swatch yellow"></span>
+                        </div>
+                    </div>
+
+                    <div class="alert">
+                        This is an alert banner. Red and orange tones may become harder to distinguish in some modes.
+                    </div>
+
+                    <div class="card-grid">
+                        <article class="card">
+                            <img alt="Sample image 1" src="https://picsum.photos/seed/color-1/600/400" />
+                            <div class="card-body">
+                                <h3>Card one</h3>
+                                <p>Short description with a small amount of text.</p>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <img alt="Sample image 2" src="https://picsum.photos/seed/color-2/600/400" />
+                            <div class="card-body">
+                                <h3>Card two</h3>
+                                <p>Another example card with different colors and contrast.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Status</th>
+                                <th>Color note</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Alpha</td>
+                                <td>Complete</td>
+                                <td>Green label</td>
+                            </tr>
+                            <tr>
+                                <td>Beta</td>
+                                <td>Warning</td>
+                                <td>Yellow label</td>
+                            </tr>
+                            <tr>
+                                <td>Gamma</td>
+                                <td>Error</td>
+                                <td>Red label</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
