@@ -212,4 +212,25 @@ buttons.forEach(btn => {
   });
 });
 
+function setSimulation(type) {
+  document.body.classList.remove(
+    'cvd-normal',
+    'cvd-deuteranopia',
+    'cvd-protanopia',
+    'cvd-tritanopia',
+    'cvd-achromatopsia',
+    'cvd-pattern'
+  );
+
+  document.body.classList.add(`cvd-${type}`);
+
+  buttons.forEach(btn => {
+    btn.classList.toggle(
+      'active',
+      btn.dataset.cvd === type
+    );
+  });
+}
+body.classList.add(`cvd-${type}`);
+
 setSimulation('deuteranopia');
