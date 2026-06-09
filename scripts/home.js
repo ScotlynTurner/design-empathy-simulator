@@ -1,9 +1,13 @@
-function getRandomColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
-}
+const cards = document.querySelectorAll(".card");
 
-setInterval(() => {
-  document.querySelectorAll(".title").forEach(element => {
-    element.style.color = getRandomColor();
-  });
-}, 2000);
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const category = card.dataset.category;
+
+        // Replace with navigation later
+        alert(`You selected: ${category}`);
+
+        // Example navigation:
+        // window.location.href = `${category.toLowerCase().replace(" ", "-")}.html`;
+    });
+});
