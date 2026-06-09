@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/motor-impairment.css">
+    <script defer src="../scripts/motor-impairment.js"></script>
+    <title>Tremor Simulator</title>
+</head>
+    <body>
+    <div id="fakeCursor"></div>
+    <div id="clickMarker"></div>
+
+    <div class="app">
+        <aside class="controls">
+            <div class="panel">
+                <div class="eyebrow">Simulator</div>
+                <h1>Tremor only</h1>
+                <p>Controls stay the same. Only the cursor shakes and clicks drift.</p>
+            </div>
+
+            <div class="panel">
+                <div class="eyebrow">Severity</div>
+                <div class="preset-list">
+                    <button type="button" data-preset="mild">Mild</button>
+                    <button type="button" data-preset="moderate">Moderate</button>
+                    <button type="button" data-preset="severe">Severe</button>
+                </div>
+
+                <label class="slider-row">
+                    <span>Tremor strength</span>
+                    <input id="tremorSlider" type="range" min="0" max="25" value="0" />
+                </label>
+
+            </div>
+        </aside>
+
+        <main class="preview">
+            <div class="website">
+                <div class="task-grid">
+                    <div class="task-card">
+                        <h2>Small Targets</h2>
+                        <div class="task-row">
+                            <button>Save</button>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                            <button>Share</button>
+                            <button>Archive</button>
+                        </div>
+                    </div>
+
+                    <div class="task-card">
+                        <h2>Form</h2>
+                        <input type="text" placeholder="First Name" />
+                        <input type="text" placeholder="Last Name" />
+                        <button>Submit</button>
+                    </div>
+
+                    <div class="task-card">
+                        <h2>Dense Navigation</h2>
+                        <div class="nav-links">
+                            <a href="#">Dashboard</a>
+                            <a href="#">Reports</a>
+                            <a href="#">Settings</a>
+                            <a href="#">Billing</a>
+                            <a href="#">Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    </body>
+</html>

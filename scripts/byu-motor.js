@@ -262,10 +262,15 @@ function showClickMissMessage() {
 function updateIntensityLabel() {
   const labels = {
     1: "Very Low",
-    2: "Low",
-    3: "Medium",
-    4: "High",
-    5: "Very High"
+    2: "Very Low",
+    3: "Low",
+    4: "Low",
+    5: "Medium",
+    6: "Medium",
+    7: "High",
+    8: "High",
+    9: "Very High",
+    10: "Very High"
   };
 
   intensityMultiplier = Number(shakeIntensity.value);
