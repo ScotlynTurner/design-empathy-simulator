@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/byu-motor.css">
+    <link rel="stylesheet" href="../styles/byu-catalog.css">
+    <script defer src="../scripts/byu-motor.js"></script>
+    <script defer src="../scripts/byu-catalog.js"></script>
+    <title>Undergraduate Catalog Programs</title>
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="brand">
+        <div class="byu-logo">BYU</div>
+        <div class="catalog-title">Undergraduate Catalog</div>
+        </div>
+
+        <div class="top-actions">
+        <span>BYU</span>
+        <span>2025-2026</span>
+        <span>MyMAP</span>
+        <input type="search" class="top-search" placeholder="Search . . ." />
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="#">Colleges</a>
+        <a href="#">Departments</a>
+        <a href="#" class="active">Programs</a>
+        <a href="#">Courses</a>
+        <a href="#">General Education</a>
+        <a href="#">Policy</a>
+        <a href="#">About BYU</a>
+        <a href="#">2026-2027 Undergraduate Catalog</a>
+    </nav>
+
+    <main class="page">
+        <div class="impairment-controls">
+            <button id="motorToggle" class="motor-toggle" type="button">
+                Turn On Motor Impairment Simulation
+            </button>
+
+            <p id="motorStatus" class="motor-status">
+                Simulation is currently off.
+            </p>
+            <div class="intensity-control">
+                <label for="shakeIntensity">Shake Intensity</label>
+
+                <input
+                id="shakeIntensity"
+                type="range"
+                min="1"
+                max="5"
+                value="3"
+                step="1"
+                />
+
+                <span id="shakeIntensityValue">Medium</span>
+            </div>
+        </div>
+        <div class="container">
+        <div class="breadcrumbs">
+            <a href="#">Home</a> / <a href="#">Programs</a>
+        </div>
+
+        <div class="layout">
+            <aside class="sidebar">
+            <h2>Programs</h2>
+
+            <label for="programSearch">Search Programs</label>
+            <input
+                id="programSearch"
+                type="search"
+                class="program-search"
+                placeholder="Type to search programs..."
+            />
+
+            <div class="filter-heading">
+                <span>Programs</span>
+                <span>⌄</span>
+            </div>
+
+            <label class="filter-option">
+                <input type="radio" name="programType" value="all" checked />
+                ALL
+            </label>
+
+            <label class="filter-option">
+                <input type="radio" name="programType" value="ba" />
+                BA
+            </label>
+
+            <label class="filter-option">
+                <input type="radio" name="programType" value="bfa" />
+                BFA
+            </label>
+
+            <label class="filter-option">
+                <input type="radio" name="programType" value="bm" />
+                BM
+            </label>
+
+            <label class="filter-option">
+                <input type="radio" name="programType" value="bs" />
+                BS
+            </label>
+            </aside>
+
+            <section class="results">
+            <div class="results-header">
+                <h1>Results <span id="resultCount"></span></h1>
+
+                <div class="sort">
+                <label for="sortSelect">Sort By</label>
+                <select id="sortSelect">
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                </select>
+                </div>
+            </div>
+
+            <div id="programList" class="program-list"></div>
+            <div id="pagination" class="pagination"></div>
+            </section>
+        </div>
+        </div>
+    </main>
+      </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h3>CONTACT US</h3>
+          <a href="#">Registrar's Office B-150 ASB</a>
+          <a href="mailto:undergraduatecatalog@byu.edu">undergraduatecatalog@byu.edu</a>
+          <a href="#">Department Directory</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>HELPFUL LINKS</h3>
+          <a href="#">Academic Advisement</a>
+          <a href="#">Academic Calendar</a>
+          <a href="#">Curriculum Tools</a>
+          <a href="#">Final Exam Policy & Schedule</a>
+          <a href="#">First-Year Mentoring</a>
+          <a href="#">MyBooklist</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>RELATED SERVICES</h3>
+          <a href="#">Additional Catalogs</a>
+          <a href="#">Class Schedule</a>
+          <a href="#">MyMAP</a>
+          <a href="#">Graduate Studies</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>RELATED SERVICES</h3>
+          <a href="#">Admissions</a>
+          <a href="#">Advisement</a>
+          <a href="#">Financial Aid</a>
+          <a href="#">Registrar</a>
+          <a href="#">Enrollment Services</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-links">
+        <a href="#">Download Catalog as PDF</a>
+        <span>Powered by <a href="#">Coursedog</a></span>
+      </div>
+    </div>
+
+    <div class="footer-brand-bar">
+      <h2>BRIGHAM YOUNG UNIVERSITY</h2>
+
+      <div class="footer-legal">
+        <a href="#">Privacy Notice</a>
+        <span>|</span>
+        <a href="#">Cookie Preferences</a>
+      </div>
+
+      <p>© 2024, All Rights Reserved | Provo, UT 84602, USA | 1-801-422-4636</p>
+    </div>
+  </footer>
+</body>
+</html>
