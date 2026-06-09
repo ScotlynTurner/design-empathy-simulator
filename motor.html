@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/motor.css">
+    <script defer src="./scripts/motor.js"></script>
+    <title>Motor Impairment</title>
+</head>
+<body>
+    <div id="motorCursor" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <a class="back-link" href="./index.html">Back</a>
+        <h1>Motor Impairment</h1>
+        <span class="status-badge" id="statusBadge" aria-live="polite">Off</span>
+    </header>
+
+    <main class="page-shell">
+        <section class="control-panel" aria-labelledby="controlsTitle">
+            <h2 id="controlsTitle">Controls</h2>
+
+            <label class="toggle-row" for="tremorToggle">
+                <span>Pointer tremor</span>
+                <input id="tremorToggle" type="checkbox">
+                <span class="toggle-track" aria-hidden="true">
+                    <span class="toggle-thumb"></span>
+                </span>
+            </label>
+
+            <label class="range-row" for="intensityRange">
+                <span class="range-label">
+                    <span>Tremor intensity</span>
+                    <output id="intensityOutput" for="intensityRange">8 px</output>
+                </span>
+                <input id="intensityRange" type="range" min="0" max="28" value="8">
+            </label>
+        </section>
+
+        <section class="practice-area" aria-labelledby="practiceTitle">
+            <div class="practice-header">
+                <h2 id="practiceTitle">Practice Targets</h2>
+            </div>
+
+            <div class="target-grid">
+                <button type="button" class="primary-action">Confirm</button>
+                <button type="button">Cancel</button>
+                <a id="sample-link" href="#sample-link">Sample link</a>
+                <label>
+                    Name
+                    <input type="text" placeholder="First and last name">
+                </label>
+                <label>
+                    Appointment
+                    <select>
+                        <option>Morning</option>
+                        <option>Afternoon</option>
+                        <option>Evening</option>
+                    </select>
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox">
+                    <span>Remember this choice</span>
+                </label>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
